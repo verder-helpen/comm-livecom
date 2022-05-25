@@ -265,7 +265,7 @@ async fn main() -> Result<(), rocket::Error> {
     if let Some(sentry_dsn) = config.sentry_dsn() {
         base = base.attach(id_contact_sentry::SentryFairing::new(
             sentry_dsn,
-            "comm-24sessions",
+            "comm-livecom",
         ));
     }
 

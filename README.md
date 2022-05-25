@@ -1,7 +1,7 @@
-# 24Sessions communication plugin for ID Contact
+# Livecom communication plugin for ID Contact
 
 This respository is a part of the ID Contact ecosystem. It contains a communication plugin used to hook up the
-[24sessions](https://www.24sessions.com/) video conferencing software to the ID Contact infrastructure.
+[Livecom](https://www.livecom.com/) video conferencing software to the ID Contact infrastructure.
 
 This implementation is intended as a reference for other video conferencing plugins. It aims to keep the
 video conferencing software as agnostic as possible to ID Contact, by implementing only the minimally required interaction.

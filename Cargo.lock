@@ -987,23 +987,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "id-contact-24sessions"
-version = "0.1.0"
-dependencies = [
- "id-contact-comm-common",
- "id-contact-jwt",
- "id-contact-proto",
- "id-contact-sentry",
- "reqwest",
- "rocket",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "id-contact-comm-common"
 version = "0.1.0"
-source = "git+https://github.com/id-contact/comm-common.git?rev=432185a377d19a0f497d794b4ef3011d16d113e0#432185a377d19a0f497d794b4ef3011d16d113e0"
+source = "git+https://github.com/id-contact/comm-common.git?rev=4bfd6385e0473d9abf57d76646bf1e356525a4e6#4bfd6385e0473d9abf57d76646bf1e356525a4e6"
 dependencies = [
  "accept-language",
  "id-contact-jwt",
@@ -1023,6 +1009,20 @@ dependencies = [
  "tera",
  "thiserror",
  "unic-langid",
+]
+
+[[package]]
+name = "id-contact-comm-livecom"
+version = "0.1.0"
+dependencies = [
+ "id-contact-comm-common",
+ "id-contact-jwt",
+ "id-contact-proto",
+ "id-contact-sentry",
+ "reqwest",
+ "rocket",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
