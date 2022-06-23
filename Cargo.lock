@@ -2760,7 +2760,7 @@ checksum = "accd4ea62f7bb7a82fe23066fb0957d48ef677f6eeb8215f372f52e48bb32426"
 [[package]]
 name = "verder-helpen-comm-common"
 version = "0.1.0"
-source = "git+https://github.com/verder-helpen/comm-common.git?rev=76ef4c4726528d75c2fb7b86ea23a604aaa09386#76ef4c4726528d75c2fb7b86ea23a604aaa09386"
+source = "git+https://github.com/verder-helpen/comm-common.git?rev=e06375782290de92387322a90153d2a107840946#e06375782290de92387322a90153d2a107840946"
 dependencies = [
  "accept-language",
  "josekit",
