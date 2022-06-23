@@ -1,4 +1,5 @@
 use rocket::http::Status;
+use rocket::response::content::{RawCss, RawJavaScript};
 use rocket::response::stream::{Event, EventStream};
 use rocket::response::{content::RawHtml, status};
 use rocket::serde::{Deserialize, Serialize};
@@ -27,7 +28,11 @@ struct AttributesReceivedEvent {
 
 #[get("/init/<guest_token>")]
 async fn init(guest_token: String, config: &State<Config>) -> Result<Redirect, Error> {
-    let GuestToken { purpose, .. } = GuestToken::from_platform_jwt(
+    let GuestToken {
+        purpose,
+        redirect_url,
+        ..
+    } = GuestToken::from_platform_jwt(
         &guest_token,
         config.auth_during_comm_config().guest_verifier(),
     )?;
@@ -35,6 +40,7 @@ async fn init(guest_token: String, config: &State<Config>) -> Result<Redirect, E
     let auth_select_params = AuthSelectParams {
         purpose,
         start_url: format!("{}/start/{}", config.external_url(), guest_token),
+        cancel_url: redirect_url,
         display_name: config.auth_during_comm_config().display_name().to_owned(),
     };
 
@@ -233,21 +239,31 @@ async fn attribute_ui(_token: String) -> RawHtml<&'static str> {
     RawHtml(include_str!("../attribute-ui/index.html"))
 }
 
+#[get("/attribute.js")]
+async fn attribute_js() -> RawJavaScript<&'static str> {
+    RawJavaScript(include_str!("../attribute-ui/attribute.js"))
+}
+
+#[get("/attribute.css")]
+async fn attribute_css() -> RawCss<&'static str> {
+    RawCss(include_str!("../attribute-ui/attribute.css"))
+}
+
 #[rocket::main]
-async fn main() -> std::result::Result<(), rocket::Error> {
+async fn main() -> Result<(), rocket::Error> {
     verder_helpen_sentry::SentryLogger::init();
     let mut base = rocket::build()
         .manage(channel::<AttributesReceivedEvent>(1024).0)
+        .mount("/internal", routes![auth_result, clean_db,])
+        .mount("/guest", routes![init, start,])
         .mount(
-            "/",
+            "/host",
             routes![
-                init,
-                start,
-                auth_result,
                 live_session_info,
                 session_info,
-                clean_db,
                 attribute_ui,
+                attribute_js,
+                attribute_css,
             ],
         )
         .attach(SessionDBConn::fairing());

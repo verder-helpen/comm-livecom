@@ -2760,7 +2760,7 @@ checksum = "accd4ea62f7bb7a82fe23066fb0957d48ef677f6eeb8215f372f52e48bb32426"
 [[package]]
 name = "verder-helpen-comm-common"
 version = "0.1.0"
-source = "git+https://github.com/verder-helpen/comm-common.git?rev=694e0e37d8491701b923d579409dcf7025bbcf76#694e0e37d8491701b923d579409dcf7025bbcf76"
+source = "git+https://github.com/verder-helpen/comm-common.git?rev=76ef4c4726528d75c2fb7b86ea23a604aaa09386#76ef4c4726528d75c2fb7b86ea23a604aaa09386"
 dependencies = [
  "accept-language",
  "josekit",
@@ -2783,7 +2783,18 @@ dependencies = [
 ]
 
 [[package]]
-name = "verder-helpen-comm-livecom"
+name = "verder-helpen-jwt"
+version = "0.1.0"
+source = "git+https://github.com/verder-helpen/verder-helpen-jwt.git#1f3b8cfc72539baf712af6ad1e167e1abe4e5afd"
+dependencies = [
+ "josekit",
+ "serde",
+ "serde_json",
+ "verder-helpen-proto",
+]
+
+[[package]]
+name = "verder-helpen-livecom"
 version = "0.1.0"
 dependencies = [
  "reqwest",
@@ -2794,17 +2805,6 @@ dependencies = [
  "verder-helpen-jwt",
  "verder-helpen-proto",
  "verder-helpen-sentry",
-]
-
-[[package]]
-name = "verder-helpen-jwt"
-version = "0.1.0"
-source = "git+https://github.com/verder-helpen/verder-helpen-jwt.git#1f3b8cfc72539baf712af6ad1e167e1abe4e5afd"
-dependencies = [
- "josekit",
- "serde",
- "serde_json",
- "verder-helpen-proto",
 ]
 
 [[package]]
