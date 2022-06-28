@@ -1,7 +1,7 @@
-# 24sessions communication plugin for Verder Helpen
+# Livecom communication plugin for Verder Helpen
 
 This respository is a part of the Verder Helpen Platform. It contains a communication plugin used to hook up the
-[24sessions](https://www.24sessions.com/) video conferencing software to the Verder Helpen infrastructure.
+[Livecom](https://www.livecom.com/) video conferencing software to the Verder Helpen infrastructure.
 
 This implementation is intended as a reference for other video conferencing plugins. It aims to keep the
 video conferencing software as agnostic as possible to Verder Helpen, by implementing only the minimally required interaction.
