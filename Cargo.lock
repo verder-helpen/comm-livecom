@@ -2932,20 +2932,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "accd4ea62f7bb7a82fe23066fb0957d48ef677f6eeb8215f372f52e48bb32426"
 
 [[package]]
-name = "verder-helpen-24sessions"
-version = "0.1.0"
-dependencies = [
- "reqwest",
- "rocket",
- "serde",
- "serde_json",
- "verder-helpen-comm-common",
- "verder-helpen-jwt",
- "verder-helpen-proto",
- "verder-helpen-sentry",
-]
-
-[[package]]
 name = "verder-helpen-comm-common"
 version = "0.1.0"
 source = "git+https://github.com/verder-helpen/comm-common.git?rev=cea0027a198bf33348886cb063ec87f8ddbe7ab1#cea0027a198bf33348886cb063ec87f8ddbe7ab1"
@@ -2979,6 +2965,20 @@ dependencies = [
  "serde",
  "serde_json",
  "verder-helpen-proto",
+]
+
+[[package]]
+name = "verder-helpen-livecom"
+version = "0.1.0"
+dependencies = [
+ "reqwest",
+ "rocket",
+ "serde",
+ "serde_json",
+ "verder-helpen-comm-common",
+ "verder-helpen-jwt",
+ "verder-helpen-proto",
+ "verder-helpen-sentry",
 ]
 
 [[package]]
