@@ -1,0 +1,31 @@
+name: Rebase and push
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      CI_COMMIT_AUTHOR: Github Action
+      CI_COMMIT_EMAIL: "github-action@users.noreply.github.com"
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+    - run: |
+        git config user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config user.email "${{ env.CI_COMMIT_EMAIL }}"
+    - name: Set environment
+      run: |
+        echo "CURBRANCH=`git rev-parse --abbrev-ref HEAD`" >> $GITHUB_ENV
+        echo "NEWBRANCH=`git rev-parse --abbrev-ref HEAD`-`git rev-parse HEAD`" >> $GITHUB_ENV
+    - name: Preserve branch with current hash
+      run: |
+        git checkout -b $NEWBRANCH
+        git push --set-upstream origin $NEWBRANCH
+    - name: Rebase main and push with force
+      run: |
+        git checkout $CURBRANCH
+        git remote add upstream https://github.com/verder-helpen/comm-24sessions.git
+        git pull --rebase upstream main
+        git push --force-with-lease
