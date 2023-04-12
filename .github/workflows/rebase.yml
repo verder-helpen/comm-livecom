@@ -1,0 +1,20 @@
+name: Rebase and push
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Preserve main with current hash
+      run: |
+        git checkout -b main-`git rev-parse HEAD`
+        git push --set-upstream origin main-`git rev-parse HEAD`
+        git checkout main
+    - name: Rebase main
+      run: |
+        git remote add upstream git@github.com:verder-helpen/comm-24sessions.git
+        git fetch upstream
+        git rebase upstream/main
+        # git push --force-with-lease
